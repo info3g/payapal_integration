@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="menu-slide">
+
+		<div class="menu-padding">
+
+			<img class="logo" src="{% static 'img/memories_logo.png' %}">
+
+		</div>
+
+
+	</div>
+
+<div class="header-small cover">
+
+	<div class="overlay-top overlay"></div>
+
+	<span class="highlight-text grad-bg">Booking</span>
+
+</div>
+
+<div class="section">
+
+	<div class="wrapper flex spaceB">
+
+		<div class="form-part">
+
+			<span class="section-title">Booking information</span>
+			<p>{{ choosen_package.slug }}</p>
+			<p>{{ serliaized_coupon }}</p>
+
+			<form class="checkout-form" method="post">
+				{% csrf_token %}
+
+					<h3>Select a date!</h3>
+					<div class="datepicker"></div>
+					<!--dátum input-->
+					<input type="text" name="tour_date" id="tour_date" hidden value="">
+
+
+				<div class="form-section headCount">
+					<h3>Add how many people do you book for!</h3>
+					<span class="minusCount countIcon">-</span><span class="count">1</span><span class="plusCount countIcon">+</span>
+					<!--headcount input-->
+					<input type="text" name="headCount" hidden value="1" id="hCount">
+				</div>
+
+				<div class="form-section persInfo">
+					<h3>Enter your information!</h3>
+					<!--name input-->
+					<input class="full-w-input" type="text" name="buyer_name" placeholder="Name">
+					<!--email input-->
+					<input class="full-w-input" type="text" name="buyer_email" placeholder="Email">
+
+					<!--coutnry input-->
+					<select class="full-w-input" name="buyer_country">
+						<option value="" disabled selected hidden>Country</option>
+						<option value="Afghanistan">Afghanistan</option>
+						<option value="Åland Islands">Åland Islands</option>
+						<option value="Albania">Albania</option>
+						<option value="Algeria">Algeria</option>
+						<option value="American Samoa">American Samoa</option>
+						<option value="Andorra">Andorra</option>
+						<option value="Angola">Angola</option>
+					</select>
+
+				<!--cím inputok-->
+				<div class="flex spaceB">
+					<input class="third-w-input" type="text" name="buyer_zip" placeholder="ZIP code">
+					<input class="three-third-w-input" type="text" name="buyer_address" placeholder="Address">
+				</div>
+
+				</div>
+
+				<div class="form-section paymentSec">
+					<h3>Choose payment!</h3>
+					<div class="choose-card orange flex center big-padding" onclick="setPayment(this,'card')">
+						<div class="select-icon"></div>
+						<div class="flex center">
+							<img src="{% static 'img/card_icon.png' %}" class="payment-icon">
+							<span>Credit/Debit card</span>
+						</div>
+					</div>
+
+					<input type="text" name="payment_type" id="payment_type" hidden value="card">
+				</div>
+
+				<div class="form-section paymentSec">
+					<div class="choose-card flex center" style="width:100%" onclick="setDoc(this)">
+						<div class="select-icon"></div>
+						<div>
+							<span>Hereby, I accept the <a href="" target="_blank">GDPR doc</a> and the <a href=""  target="_blank">ÁSZF</a></span>
+						</div>
+					</div>
+
+					<input type="text" name="docs" id="docs" hidden value="false">
+				</div>
+
+
+				<input type="text" name="totalPrice" id="totalPrice" hidden value="">
+
+				<span class="submitBtn"><button type="submit" class="button grad-bg">Book package</button></span>
+				<span class="button grad-bg formNext" onclick="nextFormStep()">Next</span> <span style="margin-left:15px">Steps:<span id="form-step"> 1</span> of 4</span>
+
+
+
+			</form>
+
+		</div>
+
+		<div class="side-bar">
+
+			<span class="section-title">Summary</span>
+
+			<div class="summary-box">
+
+				<div class="cover summary-pic" style="background-image:url({% static 'img/pest_tour.png' %})"></div>
+
+				<div class="padding">
+					<span class="grad-title">{{ choosen_package.name }}</span>
+					<ul class="package-features">
+						<li>Option with unique value</li>
+						<li>Option with unique value</li>
+						<li>Option with unique value</li>
+						<li>Option with unique value</li>
+					</ul>
+
+					<span class="flex center sumInfo summary"><img src="{% static 'img/date_icon.png' %}" class="small-icon"><span class="summaryDate">Pick a date</span></span>
+					<span class="flex center sumInfo summary"><img src="{% static 'img/person_icon.png' %}" class="small-icon"><span class="summaryPerson">1 person</span></span>
+
+					<div class="summaryPrice summary">
+
+						Total price:
+						<p class="packagePrice">{% if choosen_package.discount_price %} {{ choosen_package.discount_price }} {% else %} {{ choosen_package.price }} {% endif %} €</p>
+
+					</div>
+					 <p style="text-align: center"><a href=""><span class="link-button">CHANGE PACKAGE</span></a></p>
+				</div>
+
+			</div>
+
+			<div class="coupon">
+				<h3>Have you got discount?</h3>
+				<input class="full-w-input" placeholder="Coupon code">
+				<span class="button grad-bg couponIn">Bevált</span>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+</div>
+
+<!-- <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
+
+
+
+{% endblock %}

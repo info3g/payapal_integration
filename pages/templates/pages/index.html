@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} - An unforgettable pub crawl in Budapest {% endblock %}
+{% block metatags %}
+<meta name="keywords" content="pub crawl, pub crawl budapest, budapest pubs, budapest party, ruin pub budapest, nightlife budapest, best pub crawl budapest">
+<meta name="description" content="Memories Pub Crawl Budapest, make unforgettable memories in the best ruin pubs of Budapest. Free and unlimited drinks for one hour, welcome shots at each ruin pub and we are visiting the best club in Budapest.">
+{% endblock %}
+{% block canoical %} <link rel=”canonical” href=”https://bestpubcrawlbudapest.com/” /> {% endblock %}
+{% block og_tags %}
+<meta property="og:title" content="Memories Pub Crawl BUdapest - An unforgettable pub crawl in Budapest" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Memories Pub Crawl Budapest, make unforgettable memories in the best ruin pubs of Budapest. Free and unlimited drinks for one hour, welcome shots at each ruin pub and we are visiting the best club in Budapest."/>
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
+{% endblock %}
+{% block content %}
+
+<div class="header cover">
+
+	<div class="overlay-top overlay"></div>
+
+	<video autoplay muted loop class="header-video">
+
+		<source src="{% static 'img/header_vid.mp4'%}">
+
+	</video>
+
+	<div class="header-content">
+		<h1 class="highlight-text grad-bg"><span>Join the Best Pub Crawl in Budapest</span></h1>
+		<p>Make unforgettable memories in the secret treasures of Budapest.</p>
+		<h2>We have carefully selected the ruin pubs where you can get a taste of the real nightlife of Budapest.</h2>
+		<a href="{% url 'packages' %}"><span class="border-btn">Join now!</span></a>
+	</div>
+
+</div>
+
+<div class="section">
+
+	<div class="wrapper">
+	<p style="text-align: center"><span class="section-title">What we offer</span></p>
+	<div class="flex spaceB">
+		<div class="flex center usp-part"><img src="{% static 'img/power-hour.png' %}" class="usp-icon" alt="alcohol beverage icon">1 hour unlimited drinking</div>
+		<div class="flex center usp-part"><img src="{% static 'img/drinks.png' %}" class="usp-icon" alt="welcome shot icon">Welcome shots in every pub</div>
+		<div class="flex center usp-part"><img src="{% static 'img/bars.png' %}" class="usp-icon" alt="bars icon">4 bars filled with locals</div>
+		<div class="flex center usp-part"><img src="{% static 'img/guide.png' %}" class="usp-icon" alt="guide icon">English speaking guide</div>
+	</div>
+	</div>
+
+
+</div>
+
+<div class="section">
+
+	<div class="wrapper flex">
+
+		<div class="half flex center">
+			<div class="padding">
+				<h3 class="grad-title">Discover the secret nightlife of Budapest</h3>
+				<p>We combine the ruins pubs known and unknown to the best tourists to give a taste of the real nightlife of Budapest. In addition to the legendary Pest ruin pubs, you will finally have the opportunity to explore Buda, too. In addition to the nightlife of Pest and Buda, you can enjoy a less drink-heavy BBQ and quiz dinner. Our goal is to give you an unforgettable experience, show you the real nightlife, and ruin pubs in Budapest. We guarantee that you will not forget this night, no matter how much you drink!</p>
+				<a href="{% url 'packages' %}"><span class="button grad-bg">I want to explore!</span></a>
+			</div>
+
+		</div>
+
+		<div class="half">
+			<img src="{% static 'img/index_side_right.png' %}" class="pic" alt="group of people partying in ruin pubs">
+		</div>
+
+	</div>
+
+</div>
+
+<div class="section">
+
+	<div class="wrapper">
+	<p style="text-align: center"><span class="section-title">Our packages</span></p>
+	<div class="flex spaceB">
+
+    {% for package in packages %}
+		<div class="package-box cover" style="background-image:url({{ package.static_img_route }});">
+
+
+			<div class="overlay-bottom overlay"></div>
+
+			<div class="service-info">
+				<p style="font-size:34px; font-weight:800;">{{ package.name }}</p>
+				<a href="{% url 'packages' %}"><span class="border-btn packageBtn">Next</span></a>
+			</div>
+
+		</div>
+    {% endfor %}
+
+	</div>
+
+	</div>
+
+</div>
+
+<div class="section">
+
+	<div class="wrapper">
+
+		<p style="text-align: center"><span class="section-title">Reviews</span></p>
+		<div class="flex spaceB">
+
+			<div class="review-part">
+				<div class="review-name flex center">
+						<img src="" class="review-icon" alt="review icon">
+						<div><span class="rev-name">Armando Gomez</span><br><span class="rev-from">Tripadvisor</span></div>
+				</div>
+				<span class="flex center"><img src="{% static 'img/5stars.png' %}" class="stars" alt="review star icons">5/5</span>
+				<div class="rev-text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget placerat turpis, ut faucibus massa. Nunc lorem nibh.”</div>
+
+			</div>
+
+			<div class="review-part">
+				<div class="review-name flex center">
+						<img src="" class="review-icon" alt="review icon">
+						<div><span class="rev-name">Bill Stuart</span><br><span class="rev-from">Tripadvisor</span></div>
+				</div>
+				<span class="flex center"><img src="{% static 'img/4stars.png' %}" class="stars">4/5</span>
+				<div class="rev-text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget placerat turpis, ut faucibus massa. Nunc lorem nibh.”</div>
+
+			</div>
+
+
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<div class="section">
+
+	<div class="wrapper flex">
+
+		<div class="half">
+			<img src="{% static 'img/header.jpg' %}" class="pic" alt="group of people cheering">
+		</div>
+
+		<div class="half flex center">
+			<div class="padding">
+				<h2 class="grad-title">Power hour, 4 ruin pubs, 1 nightclub and an unforgettable pub crawl.</h2>
+				<p>We put great emphasis on getting to know each other, so we start each pub tour with one hour of free drinks, unlimited beer, wine and refreshments, and 3 shots, so we don't start the tour all thirsty. We start the tour with a walk to the next ruin pub in the Pest package, or a ride in a minibus in the Buda package. We then visit 3 carefully selected ruin pubs where we spend about 1 hour each. They are waiting for us with welcome shots everywhere. The last stop is one of Budapest's biggest nightclubs to party until the morning.</p>
+				<a href="{% url 'packages' %}"><span class="button grad-bg">Book Now!</span></a>
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+</div>
+
+<div class="section galleryPromo">
+
+	<div class="wrapper">
+
+	 <div class="flex">
+
+		<div class="half">
+			<img src="{% static 'img/index_side_left.jpg' %}" alt="group of people partying in ruin pubs">
+		</div>
+
+		<div class="half">
+			<img src="{% static 'img/index_gallery_right.png' %}" alt="group of people partying in nightclub">
+		</div>
+
+	</div>
+
+	<p style="text-align:center"><a href="{% url 'gallery' %}"><span class="button grad-bg">See our gallery!</span></a></p>
+
+
+	</div>
+</div>
+
+
+
+
+{% endblock %}
