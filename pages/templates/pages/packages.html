@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %} - Pub Crawl Budapest Packages and Prices {% endblock %}
+{% block metatags %}
+<meta name="keywords" content="pub crawl, pub crawl budapest, pub crawl budapest prices, pub crawl budapest packages, budapest pubs, budapest party, ruin pub budapest, nightlife budapest, best pub crawl budapest">
+<meta name="description" content="Memories Pub Crawl Budapest Packages and Prices. Power hour free and unlimited drinks for an hour, welcome shots at each ruin pub and many more.">
+{% endblock %}
+{% block canoical %} <link rel=”canonical” href=”https://bestpubcrawlbudapest.com/packages/” /> {% endblock %}
+{% block og_tags %}
+<meta property="og:title" content="Memories Pub Crawl Budapest - Packages and Prices" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Memories Pub Crawl Budapest Packages and Prices. Power hour free and unlimited drinks for an hour, welcome shots at each ruin pub and many more." />
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
+{% endblock %}
+{% block content %}
+<div class="header-small cover">
+
+	<div class="overlay-top overlay"></div>
+
+	<h1><span class="highlight-text grad-bg">Pub Crawl Packages and Prices</span></h1>
+
+</div>
+
+<div class="section">
+
+	<div class="wrapper packages flex spaceB">
+
+        {% for package in packages %}
+			<div class="summary-box third">
+
+				<div class="cover summary-pic" style="background-image:url({{ package.static_img_route }})"></div>
+
+
+				<div class="padding">
+					<span class="grad-title">{{ package.name }}</span>
+					<div class="sub-info">{% if package.occurence %}{{ package.occurence }} {% else %} Not available, come back soon! {% endif %}</div>
+					<div class="package-price">
+            {% if package.discount_price %}
+						<span class="old-price">{{ package.price|floatformat:0|intcomma }} €</span>
+						<p class="packagePrice">{{ package.discount_price|floatformat:0|intcomma }} €</p>
+            {% else %}
+            <p class="packagePrice">{{ package.price }} €</p>
+            {% endif %}
+						<div class="sub-info">per person</div>
+
+					</div>
+
+					<ul class="package-features">
+						{% if package.option_1 %}<li>{{ package.option_1 }}</li>{% else %}{% endif %}
+						{% if package.option_2 %}<li>{{ package.option_2 }}</li>{% else %}{% endif %}
+						{% if package.option_3 %}<li>{{ package.option_3 }}</li>{% else %}{% endif %}
+						{% if package.option_4 %}<li>{{ package.option_4 }}</li>{% else %}{% endif %}
+					</ul>
+
+
+
+					 <p style="text-align: center; margin-bottom:0"><span class="link-button" onclick="scrollDown('{{ package.slug }}')">MORE DETAILS</span></p>
+					 <p style="text-align: center; margin-top:0"><a href="{% url 'checkout' package=package.slug %}"><span class="button grad-bg">Book now!</span></a></p>
+				</div>
+
+			</div>
+      {% endfor %}
+
+
+
+	</div>
+
+</div>
+
+	<div class="section">
+
+		<div class="wrapper">
+
+
+      {% for package in packages %}
+			<div class="package-detail {{  package.slug }} flex spaceB">
+
+				<div class="third cover" style="background-image:url({{ package.static_img_route }})"></div>
+				<div class="detail-info">
+
+					<h2 class="grad-title">{% if package.name == 'BBQ-Quiz Night' %}{{ package.name }}{% else %}{{ package.name }} Pub Crawl {% endif %}</h2>
+					<p>{{ package.description|safe }}</p>
+					<p class="package-info"><span>Starting point: </span> {{ package.starting_point }}</p>
+						<p class="package-info"><span>Minimum attendants: </span> {{ package.minimum_attendants }} persons</p>
+							<p class="package-info"><span>Occurrence: </span> {% if package.occurence %} {{ package.occurence }} {% else %} Not available now, come back later! {% endif %}</p>
+
+							<a href="{% url 'checkout' package=package.slug %}"><span class="button grad-bg">I want the {{ package.name }} now!</span></a>
+
+
+				</div>
+
+
+			</div>
+      {% endfor %}
+
+		</div>
+
+	</div>
+
+	<div class="section" style="padding-bottom:0">
+
+		<div class="wrapper">
+
+		<p style="text-align:center"><span class="section-title">Meeting Point</span></p>
+		<p style="text-align:center; font-size:30px" >Retox Bar<br>Budapest, Ó u. 41, 1066</p>
+
+		</div>
+
+		<iframe
+		  width="100%"
+		  height="400"
+		  frameborder="0" style="border:0"
+		  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCTs-SuVqTbbq5VJ1f319ryN_HUBKFMIW0
+		    &q=Budapest, Ó u. 41, 1066" allowfullscreen>
+		</iframe>
+
+	</div>
+
+{% endblock %}

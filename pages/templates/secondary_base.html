@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Memories Pub Crawl Budapest {% block title %}{% endblock %}</title>
+    {% block metatags %}{% endblock %}
+    {% block og_tags %}{% endblock %}
+    {% block canoical %}{% endblock %}
+    {% block extra_braintree %} {% endblock %}
+
+
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    {% block extra_content %}{% endblock %}
+
+  </head>
+  <body>
+
+    <div class="menu-slide">
+
+		<div class="menu-padding">
+
+			<img class="logo" src="{% static 'img/memories_logo.png' %}">
+
+		</div>
+
+
+	</div>
+
+
+
+    {% block content %} {% endblock %}
+
+    {% block braintree %} {% endblock %}
+    {% block javascript %} {% endblock %}
+    <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Memories Pub Crawl Budapest {% block title %}{% endblock %}</title>
+    {% block metatags %}{% endblock %}
+    {% block og_tags %}{% endblock %}
+    {% block canoical %}{% endblock %}
+    {% block extra_braintree %} {% endblock %}
+
+    <link rel="shortcut icon" href="http://127.0.0.1:8000/static/img/favicon.png" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    {% block extra_content %}{% endblock %}
+
+  </head>
+  <body>
+
+    <div class="menu-slide">
+
+    		<div class="menu-padding flex center spaceB">
+
+    			<img class="logo" src="{% static 'img/memories_logo.png' %}">
+    			<div>
+    				<a href="{% url 'home' %}" class="menu-slide-a">Home</a>
+    				<a href="{% url 'packages' %}" class="menu-slide-a">Packages</a>
+    				<a href="{% url 'gallery' %}" class="menu-slide-a">Gallery</a>
+    				<a href="{% url 'blog' %}" class="menu-slide-a">Blog</a>
+    				<a href="{% url 'packages' %}"><span class="button grad-bg">Book Memories Now!</span></a>
+
+    			</div>
+
+    		</div>
+
+
+    	</div>
+
+    {% block content %} {% endblock %}
+
+    <div class="footer">
+
+	<div class="wrapper flex">
+
+		<div class="half" style="text-align: left;">
+
+			<img src="{% static 'img/memories_logo.png' %}" width="150px">
+			<p><img src="{% static 'img/trip.png' %}" class="social-icon">Rate us on <a href="" target="_blank">Tripadvisor</a></p>
+			<p>Follow us!<br>
+				<a href="" target="_blank"><img src="{% static 'img/insta.png' %}" class="social-icon"></a>
+				<a href="" target="_blank"><img src="{% static  'img/fb.png' %}" class="social-icon"></a>
+			</p>
+
+		</div>
+
+		<div class="half flex">
+
+			<div class="half">
+				<h3>Pages</h3>
+				<ul>
+					<a href="{% url 'home' %}"><li>Home</li></a>
+					<a href="{% url 'packages' %}"><li>Packages</li></a>
+					<a href="{% url 'gallery' %}"><li>Gallery</li></a>
+					<a href="{% url 'blog' %}"><li>Blog</li></a>
+          <a href="{% url 'terms-and-conditions' %}"><li>Terms and Conditions</li></a>
+          <a href="{% url 'privacy-policy' %}"><li>Privacy Policy</li></a>
+				</ul>
+
+			</div>
+
+			<div class="half flex center">
+				<img src="{% static 'img/paypal.png' %}" class="paypal">
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+</div>
+
+    {% block braintree %} {% endblock %}
+    {% block javascript %} {% endblock %}
+    <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

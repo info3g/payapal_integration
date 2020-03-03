@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title  %} - Pub Crawl Budapest Gallery {% endblock %}
+{% block canoical %} <link rel=”canonical” href=”https://bestpubcrawlbudapest.com/gallery” /> {% endblock %}
+{% block metatags %}
+<meta name="keywords" content="memories pub crawl budapest gallery, pub crawl, pub crawl budapest, pub crawl budapest photos, pub crawl budapest pictures, budapest pubs pictures, budapest party pictures, ruin pub budapest, nightlife budapest, best pub crawl budapest">
+<meta name="description" content="Memories Pub Crawl Budapest Gallery. Selected pictures from our amazing pub crawls in Budapest.">
+{% endblock %}
+{% block og_tags %}
+<meta property="og:title" content="Memories Pub Crawl Budapest - Gallery" />
+<meta property="og:description" content="Memories Pub Crawl Budapest Gallery. Selected pictures from our amazing pub crawls in Budapest." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="" />
+<meta property="og:image" content="" />
+{% endblock %}
+{% block content %}
+
+<div class="header-small cover">
+
+	<div class="overlay-top overlay"></div>
+
+	<h1><span class="highlight-text grad-bg">Gallery</span></h1>
+
+</div>
+
+<div class="section">
+	<p style="text-align: center; padding-bottom: 10px;">For the latest photos of our pub crawls, please check out our <a href="#">facebook</a> and <a href="#">instagram</a> page.</p>
+
+	<div class="wrapper flex spaceB">
+
+
+		{% for picture in gallery %}
+		<div class="gal-el cover" style="background-image:url({{ picture.image.url }})"></div>
+		{% endfor %}
+
+	</div>
+
+	<a href="{% url 'packages' %}"><p style="text-align: center"><span class="button grad-bg">Book some memories now!</span></p></a>
+
+
+</div>
+
+
+{% endblock %}
