@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/assets/js/newjquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $("#stateid").change(function(){
+    var a=$(this).val();
+    //alert("heloo1");
+    $.ajax({
+        type:"GET",
+        url:"/testfunction/",
+        data:{myid:a},
+        success: successFunc
+    });
+    //alert("heloo2");
+
+    function successFunc(data) {
+    //alert(data[1]);
+     $('#cityid').empty();
+
+     $('#cityid').append($("<option>").val('0').text('Select'));
+
+    $.each(data, function (i, data) {
+                    //alert(data);
+
+                    $('<option>',
+                       {
+                           value: i,
+                           text: data
+                       }).appendTo("#cityid");
+                });
+    }
+    });
+    });
+    </script>
+
+</head>
+<body>
+<select  id="stateid">
+    <option value="0">Select</option>
+    <option value="1">Test Code</option>
+</select>
+<br><br>
+<select  id="cityid">
+
+
+</select>
+</body>
+</html>

@@ -1,0 +1,12 @@
+from django.http import JsonResponse
+
+def testfucntion(request):
+    id = request.GET["myid"]
+    all_pro = State.objects.all()
+    d = {}
+    for i in all_pro:
+        d[i.statid] = i.statename
+
+    return JsonResponse(d, safe=False)
+	
+	
